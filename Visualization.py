@@ -16,14 +16,14 @@ data=pd.read_excel('CarInfo.xlsx',sheet_name='Sheet1') #read file into Dataframe
 model1=data[data['Model']=='Jetta'] 
 model1=model1.sort_values(by=['Year'])
 model1=model1.loc[:,['Year','HP','Engine Size','Price']]
-#bargraph=model1.plot.bar(x='Year',y='Price',color='red',fontsize='10')
+bargraph=model1.plot.bar(x='Year',y='Price',color='red',fontsize='10')
 print('Sub-Dataframe including all Volkswagen Jetta')
 print(model1) #print sub-dataframe from main Dataframe
-#matplot.show() #show first model regarding year vs. price of the Jetta
+matplot.show() #show first model regarding year vs. price of the Jetta
 #must close this graph in order to see the next one 
 #_____________Year vs. HorsePower_______________
-#bargraph=model1.plot.bar(x='Year',y='HP')
-#matplot.show()
+bargraph=model1.plot.bar(x='Year',y='HP')
+matplot.show()
 
 #_____________Vintage cars_______________________
 #CAMARO
