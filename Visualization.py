@@ -31,6 +31,8 @@ model2=data[data['Model']=='Camaro ZL1']
 model2=model2.sort_values(by=["Year"])
 model2=model2.loc[:,["Year",'HP','Engine Size','Seats','Price','Cylinders']]
 print('Sub-Dataframe including all Chevrolet Camaro ZL1')
+bargraph=model2.plot.bar(x='Year',y='Price')
+matplot.show()
 print(model2)
 #FERRARI
 model3=data[data['Make']=='Ferrari']
@@ -44,6 +46,7 @@ model4=model4.sort_values(by='Price')
 model4=model4.loc[:,['Model','HP','Price','Transmission','Body Style']]
 print("Sub-Dataframe including all electric cars")
 print(model4)
+
 #_____________Price vs. Body Styles__________
 for x in data['Body Style'].unique():
     print('Sub-Dataframe including all '+x+' cars')
@@ -63,8 +66,12 @@ while interval_temp<=max:
           +' horsepower')
     model=data[data['HP']<interval_temp]
     model=model[model['HP']>interval_temp-interval]
+    model=model[model['Fuel Type']!='Electric'] #electric vehicles do not have engine size
     model=model.sort_values(by='Price')
     model=model.loc[:,['Model','HP','Engine Size','Price']]
+    model['HP'].plot()
+    model['Engine Size'].plot(secondary_y=True,style='g')
+    matplot.show()
     print(model)
     interval_temp+=interval
 
