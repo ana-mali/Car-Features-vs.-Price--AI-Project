@@ -71,3 +71,16 @@ Ferrari,F8 Spider,2022,710,3.9,2,Luxury Coupe,2,Rear Wheel,Gas,No,Automatic,"283
 Ferrari,250 GTO,1963,300,3,2,Luxury Coupe,2,Rear Wheel,Gas,No,Manual,"2,000,000",V12
 Toyota,Camry LE,2022,203,2.5,2,Sedan,5,Front Wheel,Gas,No,Automatic,"27,750",4
 Ferrari,296 GTB,2022,818,3,2,Luxury Coupe,2,Rear Wheel,Hybrid,Yes,Automatic,"317,986",V6
+Mitsubishi ,Mirage ES,2022,76,1.2,4,Hatchback,5,Front Wheel,Gas,No,Manual,"14,646",3
+Mitsubishi ,Mirage ES,2022,76,1.2,4,Hatchback,5,Front Wheel,Gas,No,Automatic,"15,995",3
+Mitsubishi ,Mirage ES,2022,76,1.2,4,Sedan,5,Front Wheel,Gas,No,Manual,"15,646",3
+Mazda,6 Sport,2021,187,2.5,4,Sedan,5,Front Wheel,Gas,No,Automatic,"24,475",4
+Mazda ,3S,2022,155,2,4,Sedan,5,Front Wheel,Gas,No,Automatic,"21,150",4
+Mazda,3 2.5S,2022,186,2.5,4,Sedan,5,Front Wheel,Gas,No,Automatic,"22,100",4
+Kia,Soul LX,2023,147,2,4,SUV,5,Front Wheel,Gas,No,Automatic,"19,790",4
+Kia,Seltos LX,2023,146,2,4,SUV,5,Front Wheel,Gas,No,Automatic,"22,890",4
+Kia,Stinger GT,2023,368,3.3,4,Sedan,5,Rear Wheel,Gas,No,Automatic,"51,790",6
+Kia,K5 GT Line,2023,180,1.6,4,Sedan,5,All Wheel ,Gas,No,Automatic,"28,190",4
+Kia,K5 GT,2023,290,2.5,4,Sedan,5,Front Wheel,Gas,No,Automatic,"31,490",4
+Kia,Optima LX,2018,185,2.4,4,Sedan,5,Front Wheel,Gas,No,Automatic,"22,600",4
+Kia,Forte FE,2022,147,2,4,Sedan,5,Front Wheel,Gas,No,Automatic,"19,090",4
