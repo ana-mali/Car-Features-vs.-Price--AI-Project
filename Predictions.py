@@ -161,7 +161,7 @@ def predict_price(num):
     #adjust price according to body style
     for x in percents:
         if (x[0]==row.at[num,'Body Style']):
-            predicted_price=predicted_price+(predicted_price*x[1]) #adjust price
+            predicted_price=predicted_price+(predicted_price*x[1]/10) #adjust price
             break;
     
     #adjust price according to horsepower
@@ -169,7 +169,7 @@ def predict_price(num):
     for x in avg_horsepower: 
         if (hp<=x[0] and hp>x[0]-interval):
             difference=x[1]/avg_p #calculate percent difference from total average price
-            predicted_price=predicted_price+(predicted_price*difference) #adjust predicted price
+            predicted_price=predicted_price+(predicted_price*difference/10) #adjust predicted price
     #adjust price according to car depreciation
     print("The average price : "+str(avg_p))
     print('The predicted price is: '+str(((2 *predicted_price) / 10)))
