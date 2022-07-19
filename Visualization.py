@@ -9,7 +9,7 @@ __updated__= "2022-07-15"
 import pandas as pd #pip install pandas in command prompt
 #also install openpyxl 
 import matplotlib.pyplot as matplot
-data=pd.read_excel('CarInfo.xlsx',sheet_name='Sheet1') #read file into Dataframe
+data=pd.read_excel('CarInfo.xlsx',sheet_name='CarInfo') #read file into Dataframe
 
 #MODELING
 #_____________Year vs. Price___________________

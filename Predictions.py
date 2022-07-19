@@ -10,9 +10,9 @@ __updated__= "2022-07-17"
 import pandas as pd 
 import matplotlib.pyplot as matplot
 
-data=pd.read_excel('CarInfo.xlsx',sheet_name='Sheet1') 
+data=pd.read_excel('CarInfo.xlsx',sheet_name='CarInfo')
 ROWS=len(data.index)
-print('Number of rows: '+str(ROWS))
+print('Number of rows: '+str(ROWS-1))
 def average_price():
     #______Average price of full dataset____
     avg_price=data.loc[:,['Price']]
@@ -172,7 +172,7 @@ def predict_price(num):
             predicted_price=predicted_price+(predicted_price*difference) #adjust predicted price
     #adjust price according to car depreciation
     print(avg_p)
-    print('The predicted price is: '+str(predicted_price))
+    print('The predicted price is: '+str((2 * predicted_price)/10))
     print("The actual price is: "+str(actual_price))
 #MAIN EXECUTION
 row_num=int(input("Please enter row# to predict price: "))
