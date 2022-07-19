@@ -17,8 +17,9 @@ def average_price():
     #______Average price of full dataset____
     avg_price=data.loc[:,['Price']]
     avg_p=0
-    for x in avg_price.iterrows():#iterate through rows
-        avg_p+=x[1]
+    for x in range(len(avg_price.index)):#iterate through rows
+        val=avg_price.iat[x,0]
+        avg_p+=val
         
     avg_p=avg_p/ROWS
 #    print("Average price:"+str(avg_p))
@@ -31,9 +32,9 @@ def averageprice_body():
     bodydataframe=data.loc[:,['Body Style','Price']]
     for x in data['Body Style'].unique():
         temp=bodydataframe[bodydataframe['Body Style']==x]
-        for y in temp.iterrows():
-            a=y[1].to_list()
-            avg+=a[1]
+        for y in range(len(temp.index)):
+            val=temp.iat[y,1]
+            avg+=val
         avg=avg/ROWS 
         avg=float("{:.2f}".format(avg))
         temp1=[]
@@ -62,8 +63,9 @@ def average_horsepower():
     #______Average Horsepower______
     avg_hp=0
     horsepower=data.loc[:,['HP','Price']]
-    for x in horsepower.iterrows():
-        avg_hp+=x[1] 
+    for x in range(len(horsepower.index)):
+        val=horsepower.iat[x,0]
+        avg_hp+=val
 #    print(avg_hp)
     avg_hp=avg_hp/ROWS #calculate average horsepower of whole data set
 #    print("Average horsepower: "+str(avg_hp))
@@ -82,8 +84,9 @@ def averageprice_hp():
         model=model[model['HP']<interval_temp]
         model=model[model['HP']>interval_temp-interval]
         avg_hpp=0 #average price for interval
-        for x in model.iterrows():#loop through all rows in subdataframe
-            avg_hpp+=x[1] #sum prices
+        for x in range(len(model.index)):#loop through all rows in subdataframe
+            val=model.iat[x,1]
+            avg_hpp+=val #sum prices
     #    print('index 0 :' +str(avg_hpp[0])) #prints horsepower
     #    print('index 1 :'+str(avg_hpp[1])) #prints price
         avg_hpp=avg_hpp/len(model.index) #average price according to sub frame
@@ -96,7 +99,7 @@ def averageprice_hp():
 #    print("Average price according to horsepower ranges:")
 #    print(avg_horsepower)
     return avg_horsepower,interval
-def car_depreciationrate(num,predicted_price):
+def car_depreciationrate(num,predicted_price): #general depreciation rates
     row=data.iloc[[num]] #get row information
     row=row.loc[:,['Year',"Price"]]
     current_year=2022
@@ -109,19 +112,28 @@ def car_depreciationrate(num,predicted_price):
         for x in range(n):
             new_price=new_price*0.825
     return new_price
-def depreciation(num,predicted_price):
+def depreciation(num,predicted_price): #calculated depreciation rates
     row=data.iloc[[num]] #get row information
     row=row.loc[:,['Year',"Price",'Model']]
     current_year=2022
     car_productionyear=row.at[num,'Year']
     all_car=data[data['Model']==row.at[num,'Model']]
-    all_car.sort_values(by='Price')
+    all_car.sort_values(by='Year',ascending=False)
     price_list=[]
     n=len(all_car.index)
     for x in range(n): 
-        val=all_car.at[0,'Price']
-        price_list.append(val)
-    print(price_list)
+        val=all_car.iat[x,12] #price
+        val1=all_car.iat[x,2] #year
+        temp=[]
+        temp.append(val1)
+        temp.append(val)
+        price_list.append(temp)
+    rate=0
+    if (len(price_list)>1):
+        for x in price_list:
+            if (x[1]==row.iat[0,0]):#if same year 
+                rate=x[0]/price_list[0][0] #compare with newest price
+    predicted_price=predicted_price-(predicted_price*rate)
     return predicted_price
     
 def predict_price(num):
@@ -136,15 +148,15 @@ def predict_price(num):
     avg_p=average_price()#returns average price of full data set
     avg_bodystyle=averageprice_body() #returns avg price from each body style 
     percents=body_percent(avg_bodystyle, avg_p) #returns percentage difference
-    avg_hp,interval=average_horsepower()#returns average hp from whole data set
-    avg_horsepower=averageprice_hp()#returns list of avg prices within interval
+    avg_hp=average_horsepower()#returns average hp from whole data set
+    avg_horsepower,interval=averageprice_hp()#returns list of avg prices within interval
     row=data.iloc[[num]] 
-    row=row.loc[:,['Price','Year','HP','Body Style']]
+    row=row.loc[:,['Price','Year','HP','Body Style','Model']]
     actual_price=row.at[num,'Price'] 
     predicted_price=avg_p #start at general average price 
     #reduce price according to depreciation (production year)
     print(row)
-    predicted_price=car_depreciationrate(num,predicted_price) 
+    predicted_price=depreciation(num,predicted_price) 
     
     #adjust price according to body style
     for x in percents:
@@ -154,12 +166,14 @@ def predict_price(num):
     
     #adjust price according to horsepower
     hp=row.at[num,'HP']
-    print(avg_horsepower)
     for x in avg_horsepower: 
         if (hp<=x[0] and hp>x[0]-interval):
             difference=x[1]/avg_p #calculate percent difference from total average price
             predicted_price=predicted_price+(predicted_price*difference) #adjust predicted price
     #adjust price according to car depreciation
+    print(avg_p)
+    print('The predicted price is: '+str(predicted_price))
+    print("The actual price is: "+str(actual_price))
 #MAIN EXECUTION
 row_num=int(input("Please enter row# to predict price: "))
 predict_price(row_num)
