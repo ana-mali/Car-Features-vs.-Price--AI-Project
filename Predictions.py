@@ -171,8 +171,8 @@ def predict_price(num):
             difference=x[1]/avg_p #calculate percent difference from total average price
             predicted_price=predicted_price+(predicted_price*difference) #adjust predicted price
     #adjust price according to car depreciation
-    print(avg_p)
-    print('The predicted price is: '+str((2 * predicted_price)/10))
+    print("The average price : "+str(avg_p))
+    print('The predicted price is: '+str(((2 *predicted_price) / 10)))
     print("The actual price is: "+str(actual_price))
 #MAIN EXECUTION
 row_num=int(input("Please enter row# to predict price: "))
