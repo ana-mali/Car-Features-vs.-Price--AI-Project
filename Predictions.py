@@ -11,7 +11,7 @@ statikshock
 '''
 
 import pandas as pd 
-import matplotlib.pyplot as matplot
+#import matplotlib.pyplot as matplot
 
 data=pd.read_excel('CarInfo.xlsx',sheet_name='CarInfo')
 ROWS=len(data.index)
