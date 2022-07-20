@@ -5,6 +5,9 @@ Anastasia & Kiran
 ----------------------------------------
 __updated__= "2022-07-17"
 ----------------------------------------
+https://github.com/ana-mali/Car-Features-vs.-Price--AI-Project.git 
+ana-mali
+statikshock
 '''
 
 import pandas as pd 
