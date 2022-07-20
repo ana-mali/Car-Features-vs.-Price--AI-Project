@@ -1,6 +1,6 @@
 '''
 ----------------------------------------
-[ALgorithm to predict hypothesis results]
+[Algorithm to predict hypothesis results]
 Anastasia & Kiran
 ----------------------------------------
 __updated__= "2022-07-17"
