@@ -22,7 +22,7 @@ This project objective is to analyze car specifications and how that would affec
 Run from terminal/shell to install all requirements
 - pip install -r requirements.txt
 
-Then run either  of the below commands from terminal
+Clone the repo then run either  of the below commands from terminal
 - python Visualizations.py
 - python Predictions.py
 
