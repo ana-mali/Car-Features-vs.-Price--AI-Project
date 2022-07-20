@@ -5,6 +5,9 @@ Anastasia & Kiran
 ----------------------------------------
 __updated__= "2022-07-15"
 ----------------------------------------
+https://github.com/ana-mali/Car-Features-vs.-Price--AI-Project.git 
+ana-mali
+statikshock
 '''
 import pandas as pd #pip install pandas in command prompt
 #also install openpyxl 
